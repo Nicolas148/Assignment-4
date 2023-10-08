@@ -90,7 +90,7 @@ app.use((req, res, next) => {
   
       // Use Knex to query the database based on the searchTerm
       const records = await knex('Test')
-        .where('name', 'ilike', `%${dupont}%`) // Example: using 'ilike' for a case-insensitive search
+        .where('name', 'ilike', `%${dupont}%`)
         .select('*');
   
       res.json(records);

@@ -8,3 +8,5 @@ class TestService{
 }
 
 module.exports = new TestService();
+
+TestDAO.createTest(2,"dupont");

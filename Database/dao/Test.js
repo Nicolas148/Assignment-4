@@ -1,10 +1,10 @@
 const db = require('../db');
 
 class TestDAO {
-    async createTest(id_user,name) {
+    async createTest(id_users,name) {
         const [id] = await db('Test').insert({
             id_users: id_users, name: name,
-        }).returning('id');
+        }).returning('id_users');
         return id;
     }
 }
