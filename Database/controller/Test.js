@@ -12,4 +12,4 @@ class TestController {
     }
 }
 
-module.exprts = new TestController();
+module.exports = new TestController();

@@ -5,6 +5,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('Test',(table) => {
     table.increments('id_users');
+    table.string("name").notNullable();
   });
 };
 
