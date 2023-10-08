@@ -1,0 +1,80 @@
+<!DOCTYPE html> <!-- Version 5 of HTML-->
+<html lang="en" > <!-- Language-->
+<head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assignement 2</title> <!-- Title of the web page -->
+    <meta charset="UTF-8"> 
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>   
+</head>
+
+<body>
+    <header>
+
+    </header>
+        <section>
+            <h1>Game reviews</h1>
+        </section>
+        <label for="numberInput">Enter a number:</label>
+        <input type="number" id="numberInput">
+        <button id="squareButton">Square</button>
+        <button id="cubeButton">Cube</button>
+        <div id="result"></div>
+
+        <!-- Create Button -->
+  <button id="createBtn">Create Record</button>
+
+  <!-- Retrieve Button -->
+  <button id="retrieveBtn">Retrieve Records</button>
+
+  <!-- Update Button -->
+  <button id="updateBtn">Update Record</button>
+
+  <!-- Delete Button -->
+  <button id="deleteBtn">Delete Record</button>
+
+  <div id="response"></div>
+
+  <script>
+    const createBtn = document.getElementById('createBtn');
+    const retrieveBtn = document.getElementById('retrieveBtn');
+    const updateBtn = document.getElementById('updateBtn');
+    const deleteBtn = document.getElementById('deleteBtn');
+    const responseDiv = document.getElementById('response');
+
+    // Function to fetch and display responses
+    const fetchAndDisplayResponse = async (route) => {
+      try {
+        const response = await fetch(route);
+        const data = await response.json();
+        responseDiv.innerHTML = JSON.stringify(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    // Event listeners for each button
+    createBtn.addEventListener('click', () => {
+      fetchAndDisplayResponse('/api/create');
+    });
+
+    retrieveBtn.addEventListener('click', () => {
+      // Prompt the user for a search term
+      const searchTerm = prompt('Enter a search term:');
+      if (searchTerm !== null) {
+        fetchAndDisplayResponse(`/api/retrieve?searchTerm=${searchTerm}`);
+      }
+    });
+
+    updateBtn.addEventListener('click', () => {
+      fetchAndDisplayResponse('/api/update/1'); // Replace with a valid ID and data to update
+    });
+
+    deleteBtn.addEventListener('click', () => {
+      fetchAndDisplayResponse('/api/delete/1'); // Replace with a valid ID to delete
+    });
+  </script>
+
+
+</body><!-- End of the code -->
+</html><!-- End of the document -->
