@@ -90,7 +90,7 @@ app.use((req, res, next) => {
   
       // Use Knex to query the database based on the searchTerm
       const records = await knex('Test')
-        .where('name', 'ilike', `%${dupont}%`)
+        .where('name', 'like', `%${searchTerm}%`)
         .select('*');
   
       res.json(records);
@@ -132,7 +132,7 @@ app.use((req, res, next) => {
       const id = req.params.id;
   
       // Use Knex to delete the record
-      const deleteResult = await knex('your_table_name')
+      const deleteResult = await knex('Test')
       .where({ id })
       .del();
 

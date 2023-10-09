@@ -9,4 +9,4 @@ class TestService{
 
 module.exports = new TestService();
 
-TestDAO.createTest(2,"dupont");
+TestDAO.createTest(6,"maxime");
